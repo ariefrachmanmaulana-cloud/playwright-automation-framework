@@ -23,13 +23,14 @@ export default defineConfig({
   ],
 
   use: {
-    /* Base URL aplikasi Beca */
+    /* Base URL */
     baseURL: 'https://beca.wd105.myworkdayjobs.com',
 
     /* Mengambil screenshot dan trace hanya jika test gagal */
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
+    // Otomatis headless di CI (GitHub), headed di lokal
     headless: !!process.env.CI,
     launchOptions: {
     slowMo: 1000, // Menunda setiap aksi selama 1 detik
