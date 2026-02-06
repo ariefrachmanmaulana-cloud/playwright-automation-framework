@@ -6,7 +6,10 @@ on:
     branches: [ main, master ]
 
 jobs:
-  test:
+  # Ganti "test:" menjadi nama identitas job (tanpa spasi)
+  Automation_Testing: 
+    # Tambahkan baris name ini untuk tampilan di Dashboard GitHub Actions
+    name: Run Qanaah Login E2E Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,15 +25,15 @@ jobs:
         run: npx playwright install --with-deps
         
       - name: Run Playwright tests
-        # Cukup jalankan satu kali saja
         run: npx playwright test
         env:
-          # Pastikan nama di sini sama dengan yang ada di GitHub Secrets
           VALID_EMAIL: ${{ secrets.VALID_EMAIL }}
           VALID_PASSWORD: ${{ secrets.VALID_PASSWORD }}
+          INVALID_EMAIL: ${{ secrets.INVALID_EMAIL }}
+          INVALID_PASSWORD: ${{ secrets.INVALID_PASSWORD }}
+          INVALID_FORMAT_EMAIL: ${{ secrets.INVALID_FORMAT_EMAIL }}
           
       - name: Upload Allure Results
-        # Step ini akan tetap jalan meskipun test gagal (penting untuk analisa)
         if: always()
         uses: actions/upload-artifact@v4
         with:
