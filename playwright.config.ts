@@ -24,7 +24,7 @@ export default defineConfig({
 
   use: {
     /* Base URL */
-    baseURL: 'https://beca.wd105.myworkdayjobs.com',
+    baseURL: 'https://qonaah.luqni.my.id/',
 
     /* Mengambil screenshot dan trace hanya jika test gagal */
     trace: 'on-first-retry',
