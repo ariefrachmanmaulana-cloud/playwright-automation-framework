@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { LoginPage } from '../Pages/LoginPage';
+import { LoginPage } from '../pages/LoginPage';
 
 // Menggunakan mode serial agar test case berjalan berurutan dalam satu konteks
 test.describe.configure({ mode: 'serial' });
