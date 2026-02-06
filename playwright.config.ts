@@ -17,8 +17,9 @@ export default defineConfig({
 
   /* Mengganti reporter default menjadi Allure dan HTML */
   reporter: [
-    ['html'], 
-    ['allure-playwright', { outputFolder: 'allure-results' }]
+    ['list'], // Ini akan memunculkan nama test case di terminal
+    ['allure-playwright'],
+    ['html']
   ],
 
   use: {
