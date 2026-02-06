@@ -29,6 +29,10 @@ export default defineConfig({
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
+    headless: false,
+    launchOptions: {
+    slowMo: 1000, // Menunda setiap aksi selama 1 detik
+    },
   },
 
   projects: [
@@ -38,4 +42,6 @@ export default defineConfig({
     },
     // Jika ingin fokus di satu browser dulu agar cepat, firefox dan webkit bisa di-comment
   ],
+
+  
 });

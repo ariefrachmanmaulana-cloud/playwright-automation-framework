@@ -10,16 +10,21 @@ export class LoginPage {
     this.page = page;
     this.emailInput = page.locator('input[data-automation-id="email"]');
     this.passwordInput = page.locator('input[data-automation-id="password"]');
-    this.signInBtn = page.locator('button[data-automation-id="signInButton"]');
+    this.signInBtn = page.locator('button[data-automation-id="signInSubmitButton"]');
   }
 
   async goto() {
-    await this.page.goto('/en-US/Beca/login');
+    await this.page.goto('/en-US/Beca/login'); 
   }
 
   async login(email: string, pass: string) {
     await this.emailInput.fill(email);
     await this.passwordInput.fill(pass);
-    await this.signInBtn.click();
+
+    // Tambahkan baris ini untuk memastikan tombol sudah stabil di layar
+    await this.signInBtn.waitFor({ state: 'visible' });
+
+    // Gunakan force: true untuk mengklik menembus lapisan "click_filter"
+    await this.signInBtn.click({ force: true });
   }
 }

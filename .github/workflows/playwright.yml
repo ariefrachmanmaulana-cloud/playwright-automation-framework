@@ -31,4 +31,4 @@ jobs:
         run: npx playwright test
         env:
           VALID_EMAIL: ${{ secrets.VALID_EMAIL }}
-          VALID_PASSWORD: ${{ secrets.VALID_PASSWORD }}
+          VALID_PASSWORD: ${{ secrets.VALID_PASSWORD }} 
