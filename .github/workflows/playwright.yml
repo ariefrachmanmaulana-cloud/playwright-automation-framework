@@ -4,31 +4,36 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
       - uses: actions/setup-node@v4
         with:
           node-version: 18
+          
       - name: Install dependencies
         run: npm ci
+        
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
+        
       - name: Run Playwright tests
+        # Cukup jalankan satu kali saja
         run: npx playwright test
         env:
-          USER_EMAIL: ${{ secrets.USER_EMAIL }}
-          USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
+          # Pastikan nama di sini sama dengan yang ada di GitHub Secrets
+          VALID_EMAIL: ${{ secrets.VALID_EMAIL }}
+          VALID_PASSWORD: ${{ secrets.VALID_PASSWORD }}
+          
       - name: Upload Allure Results
+        # Step ini akan tetap jalan meskipun test gagal (penting untuk analisa)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: allure-results
           path: allure-results/
-      - name: Run Playwright tests
-        run: npx playwright test
-        env:
-          VALID_EMAIL: ${{ secrets.VALID_EMAIL }}
-          VALID_PASSWORD: ${{ secrets.VALID_PASSWORD }} 
+          retention-days: 7
