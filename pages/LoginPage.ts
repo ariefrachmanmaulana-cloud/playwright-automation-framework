@@ -42,4 +42,15 @@ export class LoginPage {
     // Klik tombol Masuk Sekarang
     await this.masukSekarangBtn.click();
   }
+
+  async ensureOnLoginPage() {
+    const currentUrl = this.page.url();
+    if (!currentUrl.includes('/login')) {
+      console.log('--- Navigasi otomatis ke halaman login ---');
+      await this.goto();
+      await this.clickStart();
+      await this.page.waitForURL(/.*login/);
+    }
+  }
+  
 }
