@@ -9,7 +9,7 @@ jobs:
   # Ganti "test:" menjadi nama identitas job (tanpa spasi)
   Automation_Testing: 
     # Tambahkan baris name ini untuk tampilan di Dashboard GitHub Actions
-    name: Run Qanaah Login E2E Tests
+    name: Run Qanaah Test Automation
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

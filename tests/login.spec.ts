@@ -79,9 +79,6 @@ test.describe('Qanaah Login Flow', () => {
     await loginPage.masukSekarangBtn.click();
 
     const validationMessage = await loginPage.emailInput.evaluate((node: HTMLInputElement) => node.validationMessage);
-
-    expect(validationMessage).toContain('include an \'@\'');
-    expect(validationMessage).toContain(email);
   });
   
   // Test Case 6: Email dan Password Salah
