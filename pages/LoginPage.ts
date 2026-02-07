@@ -1,22 +1,19 @@
 import { Page, Locator } from '@playwright/test';
 
-export class LoginPage {
+export class LoginPage { 
   readonly page: Page;
   readonly mulaiSekarangBtn: Locator;
   readonly emailInput: Locator;
   readonly passwordInput: Locator;
-  readonly masukSekarangBtn: Locator; // Nama disesuaikan dengan UI baru
+  readonly masukSekarangBtn: Locator;
 
   constructor(page: Page) {
     this.page = page;
     
-    // Landing Page Locator
     this.mulaiSekarangBtn = page.locator('a:has-text("Mulai Sekarang")');
     
-    // Login Page Locators (Berdasarkan gambar inspect element)
     this.emailInput = page.locator('input[name="email"]');
     this.passwordInput = page.locator('input[name="password"]');
-    // Pakai type="submit" karena di gambar itu adalah tombol utama form
     this.masukSekarangBtn = page.locator('button[type="submit"]:has-text("Masuk Sekarang")');
   }
 
@@ -52,5 +49,4 @@ export class LoginPage {
       await this.page.waitForURL(/.*login/);
     }
   }
-  
 }

@@ -10,7 +10,7 @@ test.describe('Qanaah Login Flow', () => {
   test.beforeAll(async ({ browser }) => {
     page = await browser.newPage();
     loginPage = new LoginPage(page);
-    // Initial goto hanya di awal sekali
+    
     await loginPage.goto();
   });
 
@@ -78,7 +78,6 @@ test.describe('Qanaah Login Flow', () => {
     await loginPage.passwordInput.fill(password);
     await loginPage.masukSekarangBtn.click();
 
-    // Pastikan teks ini sesuai dengan yang muncul di UI aplikasi lo
     await expect(page.locator('text=These credentials do not match our records.')).toBeVisible();
   });
 
